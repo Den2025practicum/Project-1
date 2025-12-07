@@ -1,15 +1,9 @@
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collection;
 import static org.junit.Assert.assertTrue;
-import static pages.FaqPage.driver;
-
 
 @RunWith(Parameterized.class)
 public class OrderTest extends BaseTest {

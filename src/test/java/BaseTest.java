@@ -21,13 +21,6 @@ public class BaseTest {
         } else if (browser.equals("firefox")) {
             startBrowserFireFox();
         }
-        // Для браузера Firefox
-//        String browser = System.getProperty("browser", "firefox"); // Значение по умолчанию
-//        if (browser.equals("firefox")) {//(browser.equals("chrome")) {
-//            startBrowserFireFox();//startBrowserChrome();
-//        } else if (browser.equals("chrome")) {//(browser.equals("firefox")) {
-//            startBrowserChrome();//startBrowserFireFox();
-//        }
         mainPage = new MainPage(driver);
         orderPage = new OrderPage(driver);
         faqPage = new FaqPage(driver);
