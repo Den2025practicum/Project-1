@@ -86,7 +86,7 @@ public class MainPage {
     public void clickChekBoxColor() { //Кликаем по чек-боксу выбора цвета самоката
         driver.findElement(ChekBoxColor).click();
     }
-    public void getComit(String string) { //Вводим доп.коментарии
+    public void getComit(String string) { //Вводим доп.комментарии
         driver.findElement(Comint).sendKeys(string);
     }
     public void clickFinishOrderBtn() {
