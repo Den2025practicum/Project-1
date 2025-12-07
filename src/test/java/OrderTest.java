@@ -20,6 +20,7 @@ public class OrderTest extends BaseTest {
     private final String address;
     private final String metro;
     private final String phone;
+    private static int i = 0;
 
     // Конструктор с параметрами
     public OrderTest(String name, String doubleName, String address, String metro, String phone) {
@@ -35,14 +36,18 @@ public class OrderTest extends BaseTest {
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"Алексей", "Коваленко", "ул. Мира 46", "Черкизовская", "+79009632148"}, // Данные о 1 пользователе
-                {"Евгений", "Петров", "пр. Чехова 82", "ВДНХ", "+79643214569"} // Данные о 2 пользователе
+                {"Евгений", "Петров", "пр. Чехова 82", "ВДНХ", "+79643214569"}, // Данные о 2 пользователе
+                {"Петр", "Иванов", "ул. Фрунзе 137", "ВДНХ", "+79356987412"} // Данные о 2 пользователе
         });
     }
     @Test
     public void orderScooter() {
         mainPage.openPage(); // Открыть веб страницу
         mainPage.clickCookiesBtn(); // Кликнуть на кнопку Cookies
-        mainPage.clickOrderBtn(); // Кликнуть на кнопку заказать (в верхней части страницы)
+        if ( i < 2) {
+            mainPage.clickOrderBtnUp(); // Кликнуть на кнопку заказать (в верхней части страницы)
+            i = i + 1; // Счетчик используемый для проверки нижней кнопки Заказать
+        }    else { mainPage.clickOrderBtnDown(); }// Кликнуть на кнопку заказать (внизу страницы)
         mainPage.getName(name); // Ввод имени в поле
         mainPage.getDoubleName(doubleName); // Ввод фамилии в поле
         mainPage.getAdress(address); // Ввод адреса в поле
@@ -56,10 +61,7 @@ public class OrderTest extends BaseTest {
         mainPage.clickChekBoxColor(); //Клик по чек-боксу выбора цвета самоката
         mainPage.getComit("Позвонить"); // Ввод текста в поле Комментарии для курьера
         mainPage.clickFinishOrderBtn(); // Клик по кнопке Заказать
-
-        new WebDriverWait(driver, Duration.ofSeconds(5))
-                .until(ExpectedConditions.elementToBeClickable(By.className("Order_ModalHeader__3FDaJ"))); // Ожидание появления элемента окна с надписью "Хотите оформить заказ?"
-        driver.findElement(By.xpath(".//div[@class='Order_Buttons__1xGrp']/button[text()='Да']")).click(); // Клик по кнопке подтверждения заказа
+        mainPage.clickYesBtn(); // Клик по кнопке подтверждения заказа "Да"
 
         assertTrue("Заказ не оформлен", orderPage.getMessageAboutPlacingOrder().isEnabled()); // Ожидаемый результат - Подтверждение заказа
     }
