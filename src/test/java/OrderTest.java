@@ -26,7 +26,7 @@ public class OrderTest extends BaseTest {
     }
 
     // Наборы параметров для тестирования
-    @Parameterized.Parameters(name = "Test with {0}")
+    @Parameterized.Parameters(name = "Пользователь {0}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {"Алексей", "Коваленко", "ул. Мира 46", "Черкизовская", "+79009632148"}, // Данные о 1 пользователе
